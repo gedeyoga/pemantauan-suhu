@@ -3,6 +3,7 @@ const mix = require('laravel-mix');
 mix.webpackConfig({
     externals: {
         jquery: "jQuery",
+        $:'jQuery'
     },
 });
 
@@ -17,7 +18,7 @@ mix.webpackConfig({
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+mix.js("resources/js/app.js", "public/js")
+    .sass("resources/sass/app.scss", "public/css")
     .sourceMaps()
     .version();

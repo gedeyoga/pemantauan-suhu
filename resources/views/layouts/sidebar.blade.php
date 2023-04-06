@@ -9,8 +9,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ request()->is('dashboard') ? 'active' : ''}}">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ request()->segment(1) == 'dashboard' ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -24,20 +24,14 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link {{ request()->is('user') ? 'active' : ''}}" href="#">
+    <li class="nav-item {{ request()->segment(1) == 'users' ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('users.index') }}">
             <i class="fas fa-users"></i>
             <span>User</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request()->is('user') ? 'active' : ''}}" href="#">
-            <i class="fas fa-boxes"></i>
-            <span>Barang</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request()->is('user') ? 'active' : ''}}" href="#">
+    <li class="nav-item {{ request()->segment(1) == 'products' ? 'active' : ''}}"">
+        <a class="nav-link" href="#">
             <i class="fas fa-boxes"></i>
             <span>Barang</span>
         </a>
