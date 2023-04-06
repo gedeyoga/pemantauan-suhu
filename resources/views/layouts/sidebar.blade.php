@@ -31,7 +31,7 @@
         </a>
     </li>
     <li class="nav-item {{ request()->segment(1) == 'products' ? 'active' : ''}}"">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fas fa-boxes"></i>
             <span>Barang</span>
         </a>

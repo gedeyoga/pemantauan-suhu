@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->double('stock');
             $table->string('unit');
+            $table->dateTime('expired_date');
             $table->timestamps();
             $table->softDeletes();
         });

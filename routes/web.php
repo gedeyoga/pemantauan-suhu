@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,6 @@ Auth::routes();
 Route::group(['middleware' => 'auth'] , function() {
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     Route::resource('users' , UserController::class)->except(['show']);
+    Route::resource('products' , ProductController::class)->except(['show']);
     
 });
