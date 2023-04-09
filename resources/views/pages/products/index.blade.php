@@ -53,12 +53,16 @@
                             <td>{{ $product->unit }}</td>
                             <td>{{ date('Y-m-d H:s' , strtotime( $product->expired_date)) }}</td>
                             <td class="d-flex">
-                                <a href="{{ route('products.edit' , ['product' => $product->id]) }}" class="btn btn-sm btn-info mr-2">Edit</a>
+                                <a href="{{ route('products.edit' , ['product' => $product->id]) }}" class="btn btn-sm btn-info mr-2" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
 
-                                <form action="{{ route('products.destroy' , ['product' => $product->id]) }}" method="post" id="form-delete">
+                                <form action="{{ route('products.destroy' , ['product' => $product->id]) }}" method="post" id="form-delete" data-toggle="tooltip" data-placement="top" title="Hapus">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" type="submit" onclick="deleteUser(event , '#form-delete')">Hapus</button>
+                                    <button class="btn btn-sm btn-danger" type="submit" onclick="deleteUser(event , '#form-delete')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

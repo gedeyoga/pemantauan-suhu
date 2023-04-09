@@ -36,6 +36,12 @@
             <span>Barang</span>
         </a>
     </li>
+    <li class="nav-item {{ request()->segment(1) == 'perangkats' ? 'active' : ''}}"">
+        <a class="nav-link" href="{{ route('perangkats.index') }}">
+            <i class="fa fa-podcast"></i>
+            <span>Perangkat</span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

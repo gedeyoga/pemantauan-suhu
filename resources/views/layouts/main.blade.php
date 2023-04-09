@@ -14,6 +14,14 @@
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ asset('vendor/sweetalert2/sweetalert2.js') }}"></script>
     <script src="{{ asset('js/public.js') }}"></script>
+    <script>
+
+        window.base_url = '{{ url("/") }}';
+
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 
     @stack('javascript')
 

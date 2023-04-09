@@ -49,13 +49,17 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td class="d-flex">
-                                <a href="{{ route('users.edit' , ['user' => $user->id]) }}" class="btn btn-sm btn-info mr-2">Edit</a>
+                                <a href="{{ route('users.edit' , ['user' => $user->id]) }}" class="btn btn-sm btn-info mr-2" data-toggle="tooltip" data-placement="top" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
 
                                 @if(Auth::user()->id != $user->id)
                                 <form action="{{ route('users.destroy' , ['user' => $user->id]) }}" method="post" id="form-delete">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" type="submit" onclick="deleteUser(event , '#form-delete')">Hapus</button>
+                                    <button class="btn btn-sm btn-danger" type="submit" onclick="deleteUser(event , '#form-delete')" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </form>
                                 @endif
                             </td>

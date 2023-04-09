@@ -11,4 +11,9 @@ class PerangkatItem extends Model
 
     protected $fillable = ['product_id' , 'perangkat_id'];
 
+    public function product() 
+    {
+        return $this->belongsTo(Product::class , 'product_id');
+    }
+
 }
