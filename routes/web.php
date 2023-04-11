@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\PerangkatItemController;
 use App\Http\Controllers\ProductController;
@@ -25,7 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'] , function() {
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users' , UserController::class)->except(['show']);
     Route::resource('products' , ProductController::class)->except(['show']);
     Route::resource('perangkats' , PerangkatController::class);

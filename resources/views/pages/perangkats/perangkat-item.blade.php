@@ -223,4 +223,5 @@
 
 @push('javascript')
 <script src="{{ asset('js/perangkats/perangkatItem.js') }}"></script>
+<script src="{{ asset('js/perangkats/history-perangkat.js') }}"></script>
 @endpush

@@ -15,8 +15,16 @@
     <script src="{{ asset('vendor/sweetalert2/sweetalert2.js') }}"></script>
     <script src="{{ asset('js/public.js') }}"></script>
     <script>
-
         window.base_url = '{{ url("/") }}';
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        // Initiate the Pusher JS library
+        var pusher = new Pusher("{{ env('PUSHER_APP_KEY') }}", {
+            encrypted: true,
+            cluster: "ap1",
+        });
 
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()

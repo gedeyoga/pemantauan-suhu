@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\HistoryPerangkatController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/products',[ProductController::class, 'index']);
+Route::post('/history-perangkat',[HistoryPerangkatController::class, 'store']);
 Route::middleware('auth:api')->group(function() {
 });

@@ -33,4 +33,14 @@ class Perangkat extends Model
     {
         return $this->hasMany(PerangkatItem::class , 'perangkat_id');
     }
+
+    public function history_perangkat()
+    {
+        return $this->hasMany(HistoryPerangkat::class , 'perangkat_id');
+    }
+
+    public function latest_perangkat_history()
+    {
+        return $this->history_perangkat()->orderBy('created_at','desc');
+    }
 }

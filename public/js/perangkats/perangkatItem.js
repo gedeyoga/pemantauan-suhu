@@ -39,7 +39,6 @@ function appentProductToHtml(response) {
     }
 
     $("#modal-list-products").html(html);
-    console.log('html' , html);
 }
 
 
