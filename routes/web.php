@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\PerangkatItemController;
 use App\Http\Controllers\ProductController;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -31,4 +32,8 @@ Route::group(['middleware' => 'auth'] , function() {
     Route::resource('products' , ProductController::class)->except(['show']);
     Route::resource('perangkats' , PerangkatController::class);
     Route::resource('perangkatitems' , PerangkatItemController::class)->except(['index' , 'edit'  , 'create']);
+    
+    //Laporan Route
+    Route::get('/laporans' , [LaporanController::class , 'index'])->name('laporans.index');
+    Route::get('/laporans/export' , [LaporanController::class , 'exportExcel'])->name('laporans.export');
 });

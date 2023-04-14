@@ -23,7 +23,14 @@
                         $history = $perangkat->latest_perangkat_history->first();
                         $suhu = !is_null($history) ? $history->suhu : 0;
                     @endphp
-                    <h2 id="suhu-perangkat-{{$perangkat->id}}">{{ $suhu }}'{{ $perangkat->satuan_suhu }}</h2>
+                    @if( $suhu < $perangkat->temperature_min)
+                        <h2 id="suhu-perangkat-{{$perangkat->id}}" class="text-primary">{{ $suhu }}'{{ $perangkat->satuan_suhu }}</h2>
+                    @elseif($suhu > $perangkat->temperature_min)
+                        <h2 id="suhu-perangkat-{{$perangkat->id}}" class="text-success">{{ $suhu }}'{{ $perangkat->satuan_suhu }}</h2>
+                    @else
+                        <h2 id="suhu-perangkat-{{$perangkat->id}}" class="text-danger">{{ $suhu }}'{{ $perangkat->satuan_suhu }}</h2>
+                    @endif
+                   
                 </div>
 
                 <div style="overflow-y: scroll; min-height: 400px;">

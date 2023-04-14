@@ -42,6 +42,12 @@
             <span>Perangkat</span>
         </a>
     </li>
+    <li class="nav-item {{ request()->segment(1) == 'laporans' ? 'active' : ''}}"">
+        <a class="nav-link" href="{{ route('laporans.index') }}">
+            <i class="fa fa-book"></i>
+            <span>Laporan</span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
