@@ -24,12 +24,12 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ request()->segment(1) == 'users' ? 'active' : ''}}">
+    <!-- <li class="nav-item {{ request()->segment(1) == 'users' ? 'active' : ''}}">
         <a class="nav-link" href="{{ route('users.index') }}">
             <i class="fas fa-users"></i>
             <span>User</span>
         </a>
-    </li>
+    </li> -->
     <li class="nav-item {{ request()->segment(1) == 'products' ? 'active' : ''}}"">
         <a class="nav-link" href="{{ route('products.index') }}">
             <i class="fas fa-boxes"></i>

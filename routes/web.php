@@ -21,19 +21,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('dashboard');
 });
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'] , function() {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('users' , UserController::class)->except(['show']);
-    Route::resource('products' , ProductController::class)->except(['show']);
-    Route::resource('perangkats' , PerangkatController::class);
-    Route::resource('perangkatitems' , PerangkatItemController::class)->except(['index' , 'edit'  , 'create']);
     
-    //Laporan Route
-    Route::get('/laporans' , [LaporanController::class , 'index'])->name('laporans.index');
-    Route::get('/laporans/export' , [LaporanController::class , 'exportExcel'])->name('laporans.export');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::resource('users', UserController::class)->except(['show']);
+Route::resource('products', ProductController::class)->except(['show']);
+Route::resource('perangkats', PerangkatController::class);
+Route::resource('perangkatitems', PerangkatItemController::class)->except(['index', 'edit', 'create']);
+
+//Laporan Route
+Route::get('/laporans', [LaporanController::class, 'index'])->name('laporans.index');
+Route::get('/laporans/export', [LaporanController::class, 'exportExcel'])->name('laporans.export');

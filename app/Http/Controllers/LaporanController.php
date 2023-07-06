@@ -29,9 +29,11 @@ class LaporanController extends Controller
             $default_periode = date('Y-m' , strtotime($request->get('periode')));
         }
 
+
+        $perangkat_harian = $this->getHistoryPerangkatHarian($periode);
         $perangkats = $this->getHistoryPerangkat($periode);
 
-        return view('pages.laporans.index' , compact( 'perangkats' , 'default_periode'));
+        return view('pages.laporans.index' , compact( 'perangkats' , 'default_periode' , 'perangkat_harian'));
     }
     public function exportExcel(Request $request)
     {
@@ -95,4 +97,32 @@ class LaporanController extends Controller
         return $perangkats;
         
     }
+
+
+    protected function getHistoryPerangkatHarian($periode)
+    {
+        $history = HistoryPerangkat::select(['*' , DB::raw('round( AVG(suhu), 2) as rata_suhu')])->whereBetween('created_at', $periode)->groupBy([
+            'perangkat_id',
+            DB::raw('DAY(created_at)')
+        ])
+        ->get()
+        ->each(function($item, $index) {
+            $date = date('Y-m-d', strtotime($item->created_at));
+            $item->history_days = HistoryPerangkat::select(['*', DB::raw('round( AVG(suhu), 2) as rata_suhu')])
+                                    ->where('created_at' , 'like', $date . '%')->groupBy([
+                                        DB::raw('HOUR(created_at)')
+                                    ])
+                                    ->get();
+        });
+
+        $perangkats = Perangkat::all();
+
+        $perangkats->each(function($item , $index) use ($history) {
+            $item->history = $history->where('perangkat_id' , $item->id);
+        });        
+        return $perangkats;
+        
+    }
+
+
 }

@@ -38,16 +38,16 @@
                         <thead>
                             <tr>
                                 <th>Nama Produk</th>
-                                <th>Stok</th>
-                                <th>Kadaluwarsa</th>
+                                <!-- <th>Stok</th>
+                                <th>Kadaluwarsa</th> -->
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($perangkat->perangkat_items as $item)
                             <tr>
                                 <td>{{ $item->product->name }}</td>
-                                <td>{{ $item->product->stock }}</td>
-                                <td> {{ date('Y-m-d' , strtotime($item->product->expired_date)) }}</td>
+                                <!-- <td>{{ $item->product->stock }}</td>
+                                <td> {{ date('Y-m-d' , strtotime($item->product->expired_date)) }}</td> -->
                             </tr>
                             @endforeach
                         </tbody>
